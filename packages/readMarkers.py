@@ -22,6 +22,7 @@ def readMarkers():
     print ("----- Buscando en base de datos ------")
     time.sleep(2)
     print ("# Acceso a " + mark_list[int(mark_num)])
+    print ("Comment: " + markers["markers"][mark_list[int(mark_num)]]["comment"])
     print ("url: " + markers["markers"][mark_list[int(mark_num)]]["url"])
     print ("user: " + markers["markers"][mark_list[int(mark_num)]]["access"]["user"])
     print ("pass: " + markers["markers"][mark_list[int(mark_num)]]["access"]["pass"])

@@ -2,6 +2,8 @@
 Script para marcadores web. (Guardar accesos)
 
 Para realiar la instalacion inicial de la base de datos 
-ejecutar el archivo "loadsSettings.py" dentro de la carpeta
+1_ Tener instalado Python3
+
+2_ Ejecutar el archivo "loadsSettings.py" dentro de la carpeta
 packages
 

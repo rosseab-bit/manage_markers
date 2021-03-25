@@ -7,6 +7,14 @@
                 "user": "prueba5",
                 "pass": "5"
             }
+        },
+        "prueba6": {
+            "url": "www.prueba6.com",
+            "comment": "prueba6 de marcadores",
+            "access": {
+                "user": "prueba6",
+                "pass": "123456"
+            }
         }
     }
 }

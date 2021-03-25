@@ -19,6 +19,7 @@ def readMarkers():
         n = n+1
     print ("Ingerse el numero del marcador: ")
     mark_num = input()
+    print (mark_list)
     print ("----- Buscando en base de datos ------")
     time.sleep(2)
     print ("# Acceso a " + mark_list[int(mark_num)])

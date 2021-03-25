@@ -4,15 +4,25 @@ import sys
 import os
 import time
 from packages import readMarkers
+from packages import editMarkers
 from packages import writeMarkers
 from packages import dellMarkers
 
 def manageMarkers():
     while (True):
-        print ("------ Managmen Markers System ------")
-        print ("-------------------------------------")
+        print ("""\n
+
+        ███╗░░░███╗░█████╗░██████╗░██╗░░██╗███████╗██████╗░░██████╗  ░██████╗██████╗░
+        ████╗░████║██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗██╔════╝  ██╔════╝██╔══██╗
+        ██╔████╔██║███████║██████╔╝█████═╝░█████╗░░██████╔╝╚█████╗░  ╚█████╗░██████╦╝
+        ██║╚██╔╝██║██╔══██║██╔══██╗██╔═██╗░██╔══╝░░██╔══██╗░╚═══██╗  ░╚═══██╗██╔══██╗
+        ██║░╚═╝░██║██║░░██║██║░░██║██║░╚██╗███████╗██║░░██║██████╔╝  ██████╔╝██████╦╝
+        ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░  ╚═════╝░╚═════╝░
+        -----------------------------------------------------------------------------\n
+        -----------------------------------------------------------------------------\n
+                """)
         print ("Elija una de las opciones: ")
-        print ("b: buscar \ni: insertar \ne: eliminar")
+        print ("b: buscar \ni: insertar \nd: editar \ne: eliminar")
         option = input('Ingrese la opciones que desea: \n')
         if option == "b":
             print ("------ Accediendo a la base de datos: ------")
@@ -22,6 +32,11 @@ def manageMarkers():
             print ("------ Accediendo a la base de datos ------")
             writeMarkers.writeMarker()
             print ("------ Ingresando nuevo marcador a la base ------")
+            print ("------ Exit Database -----")
+        elif option == "d":
+            print ("------ Accediendo a la base de datos ------")
+            editMarkers.editMarkers()
+            print ("------ Editar marcador seleccionado ------")
             print ("------ Exit Database -----")
         elif option == "e":
             print ("------ Accediendo a la base de datos ------")

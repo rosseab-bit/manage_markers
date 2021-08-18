@@ -59,7 +59,7 @@ class locky:
 
     def saveNew(self):
         self.message['text']=''
-        dblocky=self.dblocky
+        dblocky=json.loads(open('databases/db.json').read())
         for item in dblocky:
             if self.title.get() == item:
                 self.message['text']="Please ingress another tittle"
@@ -78,6 +78,11 @@ class locky:
         lockyDump = open('databases/db.json', 'w')
         lockyDump.write(json.dumps(dblocky, indent=4))
         lockyDump.close()
+        self.title.delete(0, END)
+        self.url.delete(0, END)
+        self.comment.delete(0, END)
+        self.user.delete(0, END)
+        self.password.delete(0, END)
         self.getItems()
 
     def getItems(self):
@@ -91,7 +96,7 @@ class locky:
             self.tree.insert('', 0, text = item, values = dblocky[item]['url'])
 
     def openItem(self):
-        dblocky=self.dblocky
+        dblocky=json.loads(open('databases/db.json').read())
         try:
             titleOpen=self.tree.item(self.tree.selection())['values'][0]
         except:
@@ -110,7 +115,7 @@ class locky:
         Entry(frame, textvariable = StringVar(frame, value = dblocky[titleOpen]['access']['pass'])).grid(row = 2, column = 2)
 
     def editItem(self):
-        dblocky=self.dblocky
+        dblocky=json.loads(open('databases/db.json').read())
         titleOpen=self.tree.item(self.tree.selection())['text']
         self.edit_wind = Toplevel()
         self.edit_wind.title = 'Edit'
@@ -147,7 +152,7 @@ class locky:
         # backup db
         backup_db='db_%s.json.bk' % datetime.datetime.now().isoformat()
         lockyBackup = open(backup_db, 'w')
-        lockyBackup.write(json.dumps(self.dblocky, indent=4))
+        lockyBackup.write(json.dumps(json.loads(open('databases/db.json').read()), indent=4))
         lockyBackup.close()
         print(tittle)
         tittleRecord={"url": url,
@@ -157,7 +162,7 @@ class locky:
                             "pass": password
                     }}
         print(tittle)
-        dblocky=self.dblocky
+        dblocky=json.loads(open('databases/db.json').read())
         dblocky[tittle]=tittleRecord
         print(dblocky)
         lockyDump = open('databases/db.json', 'w')
@@ -178,9 +183,9 @@ class locky:
         lockyBackup.write(json.dumps(self.dblocky, indent=4))
         lockyBackup.close()
         delTittle=self.tree.item(self.tree.selection())['text']
-        for item in self.dblocky:
+        for item in json.loads(open('databases/db.json').read()):
             if item!=delTittle:
-                updateDB[item]=self.dblocky[item]
+                updateDB[item]=json.loads(open('databases/db.json').read())[item]
         print(updateDB)
         lockyDump = open('databases/db.json', 'w')
         lockyDump.write(json.dumps(updateDB, indent=4))

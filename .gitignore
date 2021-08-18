@@ -131,4 +131,4 @@ dmypy.json
 # custom
 databases/markersDB.json
 databases/
-
+*.json.bk

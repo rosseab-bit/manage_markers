@@ -3,7 +3,6 @@ import json
 import sys
 import os
 import time
-import datetime
 from tkinter import ttk
 from tkinter import *
 

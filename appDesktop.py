@@ -150,7 +150,7 @@ class locky:
             self.messageEdit['text']="Please complete all items"
             return
         # backup db
-        backup_db='db_%s.json.bk' % datetime.datetime.now().isoformat()
+        backup_db='db_.json.bk'
         lockyBackup = open(backup_db, 'w')
         lockyBackup.write(json.dumps(json.loads(open('databases/db.json').read()), indent=4))
         lockyBackup.close()
@@ -178,7 +178,7 @@ class locky:
             self.message['text'] = "Select an item of the list"
             return
         # backup db
-        backup_db='db_%s.json.bk' % datetime.datetime.now().isoformat()
+        backup_db='db_.json.bk'
         lockyBackup = open(backup_db, 'w')
         lockyBackup.write(json.dumps(self.dblocky, indent=4))
         lockyBackup.close()

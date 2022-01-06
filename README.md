@@ -1,4 +1,8 @@
 # manage_markers
+***
+## Tiene dos opciones para poder ejecutar. Una de ellas mediante linea de 
+## Comandos y la otra una interfaz de escritorio.
+***
 Script para marcadores web. (Guardar accesos)
 
 Para realiar la instalacion inicial de la base de datos 
@@ -7,12 +11,9 @@ Para realiar la instalacion inicial de la base de datos
 2_ Ejecutar el archivo "loadsSettings.py" dentro de la carpeta
 packages
 
-# Tiene dos opciones para poder ejecutar. Una de ellas mediante linea de 
-# Comandos y la otra una interfaz de escritorio.
-
---------------------------------------------------------------
+***
                 >>>> Linea de comandos <<<<
---------------------------------------------------------------
+***
 Podra acceder desde el terminal para poder administrar y ver
 las contraseñas.
 

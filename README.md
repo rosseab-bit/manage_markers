@@ -11,7 +11,7 @@ Para realiar la instalacion inicial de la base de datos
 2_ Ejecutar el archivo "loadsSettings.py" dentro de la carpeta
 packages
 
->>> python3 loadsSettings.py <<<
+> python3 loadsSettings.py
 
 Esto cargara la configuracion inicial.
 

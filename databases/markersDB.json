@@ -15,6 +15,14 @@
                 "user": "prueba6",
                 "pass": "123456"
             }
+        },
+        "prueba8": {
+            "url": "www.prueba8.com.ar",
+            "comment": "Esta es otra prueba",
+            "access": {
+                "user": "prueba8",
+                "pass": "12345678"
+            }
         }
     }
 }

@@ -44,4 +44,24 @@ ya no uses.
 
 Ejecutar el scritp
 
-$ python3 appDesktop.py
+> $ python3 appDesktop.py
+
+
+<p align="center"><img src="src/DesktopAppMain.png" /></p>
+
+
+> Tenemos la ventana principal en la cual podremos ver una lista
+> de las contraseñas que tengamos guardadas.
+> Podremos actualizar la lista y tambien eliminar items.
+
+<p align="center"><img src="src/DesktopAppOpen.png" /></p>
+
+> Desde el boton open seleccionando un item de la lista podremos
+> ver el contenido del mismo.
+
+<p align="center"><img src="src/DesktopAppEdit.png" /></p>
+
+> Desde el boton Edit podremos editar el item que seleccionemos 
+> de la lista. 
+
+

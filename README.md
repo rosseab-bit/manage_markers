@@ -38,3 +38,10 @@ e - Desde esta opcion podras eliminar las contraseñas que
 ya no uses.
 <p align="center"><img src="src/opciones_e.png" /></p>
 
+***
+### Version de Escritorio 
+***
+
+Ejecutar el scritp
+
+$ python3 appDesktop.py

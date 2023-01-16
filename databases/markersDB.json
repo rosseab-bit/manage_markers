@@ -1,11 +1,11 @@
 {
     "markers": {
         "prueba5": {
-            "url": "www.prueba5.com.ar",
+            "url": "www.prueba56.com.ar",
             "comment": "quinta prueba",
             "access": {
                 "user": "prueba5",
-                "pass": "5"
+                "pass": "6"
             }
         },
         "prueba6": {

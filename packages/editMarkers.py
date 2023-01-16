@@ -64,7 +64,9 @@ def editMarkers():
                 markers["markers"][mark_list[int(mark_num)]]["access"]["pass"] = option
 
         
-    
+    out_file = open(markersDB, 'w')
+    json.dump(markers, out_file, indent=4)
+    out_file.close()
 
     print ("# Se actualizo el marcador: " + mark_list[int(mark_num)])
     print ("Comment: " + markers["markers"][mark_list[int(mark_num)]]["comment"])

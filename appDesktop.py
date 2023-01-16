@@ -8,7 +8,7 @@ from tkinter import *
 
 class locky:
     def __init__(self, window):
-        self.dblocky=json.loads(open('databases/db.json').read())
+        self.dblocky=json.loads(open('databases/markersDB.json').read())
         self.wind=window
         self.wind.title('Locky')
         #self.wind.geometry('640x480')
@@ -58,7 +58,7 @@ class locky:
 
     def saveNew(self):
         self.message['text']=''
-        dblocky=json.loads(open('databases/db.json').read())
+        dblocky=json.loads(open('databases/markersDB.json').read())
         for item in dblocky:
             if self.title.get() == item:
                 self.message['text']="Please ingress another tittle"
@@ -72,9 +72,9 @@ class locky:
         }
         }
         print(op)
-        dblocky[self.title.get()]=op
+        dblocky["markers"][self.title.get()]=op
         print(dblocky)
-        lockyDump = open('databases/db.json', 'w')
+        lockyDump = open('databases/markersDB.json', 'w')
         lockyDump.write(json.dumps(dblocky, indent=4))
         lockyDump.close()
         self.title.delete(0, END)
@@ -85,17 +85,18 @@ class locky:
         self.getItems()
 
     def getItems(self):
-        dblocky=json.loads(open('databases/db.json').read())
+        dblocky=json.loads(open('databases/markersDB.json').read())
         records = self.tree.get_children()
         for element in records:
             self.tree.delete(element)
-        for item in dblocky:
-            print(dblocky[item]['url'])
+        for item in dblocky["markers"]:
             print(item)
-            self.tree.insert('', 0, text = item, values = dblocky[item]['url'])
+            print(dblocky["markers"][item]['url'])
+            print(item)
+            self.tree.insert('', 0, text = item, values = dblocky["markers"][item]['url'])
 
     def openItem(self):
-        dblocky=json.loads(open('databases/db.json').read())
+        dblocky=json.loads(open('databases/markersDB.json').read())
         try:
             titleOpen=self.tree.item(self.tree.selection())['values'][0]
         except:
@@ -107,32 +108,32 @@ class locky:
         frame=LabelFrame(self.open_wind, text=titleOpen)
         frame.grid(row=0, column=0, columnspan=3, pady=20)
         Label(frame, text = "URL: ").grid(row = 0, column = 1)
-        Entry(frame, textvariable = StringVar(frame, value = dblocky[titleOpen]['url'])).grid(row = 0, column = 2)
+        Entry(frame, textvariable = StringVar(frame, value = dblocky["markers"][titleOpen]['url'])).grid(row = 0, column = 2)
         Label(frame, text = "User: ").grid(row = 1, column = 1)
-        Entry(frame, textvariable = StringVar(frame, value = dblocky[titleOpen]['access']['user'])).grid(row = 1, column = 2)
+        Entry(frame, textvariable = StringVar(frame, value = dblocky["markers"][titleOpen]['access']['user'])).grid(row = 1, column = 2)
         Label(frame, text = "Pass: ").grid(row = 2, column = 1)
-        Entry(frame, textvariable = StringVar(frame, value = dblocky[titleOpen]['access']['pass'])).grid(row = 2, column = 2)
+        Entry(frame, textvariable = StringVar(frame, value = dblocky["markers"][titleOpen]['access']['pass'])).grid(row = 2, column = 2)
 
     def editItem(self):
-        dblocky=json.loads(open('databases/db.json').read())
+        dblocky=json.loads(open('databases/markersDB.json').read())
         titleOpen=self.tree.item(self.tree.selection())['text']
         self.edit_wind = Toplevel()
         self.edit_wind.title = 'Edit'
         frameEdit=LabelFrame(self.edit_wind, text=titleOpen)
         frameEdit.grid(row=0, column=0, columnspan=3, pady=20)
-        url="URL: "+dblocky[titleOpen]['url']
+        url="URL: "+dblocky["markers"][titleOpen]['url']
         Label(frameEdit, text = url).grid(row = 0, column = 1)
         self.editURL=Entry(frameEdit)
         self.editURL.grid(row=1, column=1)
-        comment="Comment: "+dblocky[titleOpen]['comment']
+        comment="Comment: "+dblocky["markers"][titleOpen]['comment']
         Label(frameEdit, text = comment).grid(row = 2, column = 1)
         self.editComment=Entry(frameEdit)
         self.editComment.grid(row=3, column=1)
-        user="User: "+dblocky[titleOpen]['access']['user']
+        user="User: "+dblocky["markers"][titleOpen]['access']['user']
         Label(frameEdit, text = user).grid(row = 4, column = 1)
         self.editUser=Entry(frameEdit)
         self.editUser.grid(row=5, column=1)
-        password="Pass: "+dblocky[titleOpen]['access']['pass']
+        password="Pass: "+dblocky["markers"][titleOpen]['access']['pass']
         Label(frameEdit, text = password).grid(row = 6, column = 1)
         self.editPassword=Entry(frameEdit)
         self.editPassword.grid(row=7, column=1)
@@ -151,7 +152,7 @@ class locky:
         # backup db
         backup_db='db_.json.bk'
         lockyBackup = open(backup_db, 'w')
-        lockyBackup.write(json.dumps(json.loads(open('databases/db.json').read()), indent=4))
+        lockyBackup.write(json.dumps(json.loads(open('databases/markersDB.json').read()), indent=4))
         lockyBackup.close()
         print(tittle)
         tittleRecord={"url": url,
@@ -161,16 +162,16 @@ class locky:
                             "pass": password
                     }}
         print(tittle)
-        dblocky=json.loads(open('databases/db.json').read())
+        dblocky=json.loads(open('databases/markersDB.json').read())
         dblocky[tittle]=tittleRecord
         print(dblocky)
-        lockyDump = open('databases/db.json', 'w')
+        lockyDump = open('databases/markersDB.json', 'w')
         lockyDump.write(json.dumps(dblocky, indent=4))
         lockyDump.close()
         self.getItems()
 
     def delItem(self):
-        updateDB = {}
+        updateDB = {"markers":{}}
         try:
             titleOpen=self.tree.item(self.tree.selection())['values'][0]
         except:
@@ -182,11 +183,14 @@ class locky:
         lockyBackup.write(json.dumps(self.dblocky, indent=4))
         lockyBackup.close()
         delTittle=self.tree.item(self.tree.selection())['text']
-        for item in json.loads(open('databases/db.json').read()):
+        for item in json.loads(open('databases/markersDB.json').read())["markers"]:
+            print("itemFor: "+item)
+            print("itemDel: "+delTittle)
+            print("itemLoad: "+str(json.loads(open('databases/markersDB.json').read())["markers"][item]))
             if item!=delTittle:
-                updateDB[item]=json.loads(open('databases/db.json').read())[item]
+                updateDB["markers"][item]=json.loads(open('databases/markersDB.json').read())["markers"][item]
         print(updateDB)
-        lockyDump = open('databases/db.json', 'w')
+        lockyDump = open('databases/markersDB.json', 'w')
         lockyDump.write(json.dumps(updateDB, indent=4))
         lockyDump.close()
         self.getItems()

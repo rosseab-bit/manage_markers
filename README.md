@@ -3,7 +3,7 @@
 ## Tiene dos opciones para poder ejecutar. Una de ellas mediante linea de 
 ## Comandos y la otra una interfaz de escritorio.
 ***
-Script para marcadores web. (Guardar accesos)
+Script para marcadores webs o contraseñas. (Guardar accesos)
 
 Para realiar la instalacion inicial de la base de datos 
 1_ Tener instalado Python3
